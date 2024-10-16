@@ -12,11 +12,15 @@ int main(int ac, char **av) {
   }
   
   // optionがついてるか、ついてるなら処理
-  t_options opts;
+  t_options opts = {false, false, false, false};
   if (parse_options(ac, av, &opts)) {
     return 1;
   }
-
+  printf("Options:\n");
+  printf("  -p: %s\n", opts.p ? "true" : "false");
+  printf("  -q: %s\n", opts.q ? "true" : "false");
+  printf("  -r: %s\n", opts.r ? "true" : "false");
+  printf("  -s: %s\n", opts.s ? "true" : "false");
   // 標準入力から値を受け取る処理
   
   printf("Hello, World!\n");

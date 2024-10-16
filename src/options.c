@@ -11,7 +11,7 @@ bool parse_options(int ac, char **av, t_options *opts) {
 	  opts->p = true;
 	  break;
 	case 'q':
-	    opts->q = true;
+	  opts->q = true;
 	  break;
 	case 'r':
 	  opts->r = true;
