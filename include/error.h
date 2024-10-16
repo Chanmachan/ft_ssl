@@ -5,29 +5,25 @@
 #include <stdio.h>
 #include <string.h>
 
-// 84 characters fixed length
+// characters fixed length
 // 83+nul
-#define DEFAULT_MSG_LEN 84
+#define ERR_MSG_LEN_INVALID_COMMAND 84
+// 36+1
+#define ERR_MSG_LEN_INVALID_OPTION 37
 
 typedef enum e_error_code{
   ERR_NO_ARGUMENTS,
   ERR_INVALID_COMMAND,
+  ERR_INVALID_OPTION,
+  SUCCESS,
 } t_error_code;
 
 static const char* ERROR_MESSAGE[] = {
   "usage: ft_ssl command [flags] [file/string]\n",
-  "ft_ssl: Error: '%s' is an invalid command.\n\nCommands:\nmd5\nsha256\n\nFlags:\n-p -q -r -s\n"
+  "ft_ssl: Error: '%s' is an invalid command.\n\nCommands:\nmd5\nsha256\n\nFlags:\n-p -q -r -s\n",
+  "ft_ssl: Error: invalid option -- '%s'\n",
 };
 
-void print_err(t_error_code code, char *detail) {
-  if (code == ERR_NO_ARGUMENTS) {
-    write(STDERR_FILENO, ERROR_MESSAGE[code], strlen(ERROR_MESSAGE[code]));
-  } else {
-    size_t size = DEFAULT_MSG_LEN + strlen(detail);
-    char buffer[size];
-    snprintf(buffer, size, ERROR_MESSAGE[code], detail);
-    write(STDERR_FILENO, buffer, strlen(buffer));
-  }
-}
+void print_err(t_error_code code, char *detail);
 
 #endif
