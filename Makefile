@@ -10,7 +10,9 @@ INCLUDE = ./include
 
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
-CFLAGS = -Wall -Wextra -Werror
+DEPS = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.d)
+
+CFLAGS = -Wall -Wextra -Werror -MMD -MP
 
 all: $(OBJ_DIR) $(NAME)
 
@@ -22,6 +24,8 @@ $(NAME): $(OBJ)
 
 $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -I$(INCLUDE) -c $< -o $@
+
+-include $(DEPS)
 
 clean:
 	$(RM) -r $(OBJ_DIR)
