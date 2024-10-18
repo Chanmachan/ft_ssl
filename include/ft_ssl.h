@@ -11,6 +11,9 @@ typedef struct s_data {
   t_input_type input_type;
   char *input;
   char *hash;
+  struct s_data *next;
 } t_data;
+
+void append_data(t_data **head, t_input_type input_type, char *input, char *hash);
 
 #endif
