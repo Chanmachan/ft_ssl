@@ -8,12 +8,14 @@ typedef enum s_input_type {
 } t_input_type;
 
 typedef struct s_data {
-  t_input_type input_type;
-  char *input;
-  char *hash;
-  struct s_data *next;
+    t_input_type input_type;
+    char *input;
+    char *hash;
+    char *filename;
+    struct s_data *next;
 } t_data;
 
-void append_data(t_data **head, t_input_type input_type, char *input, char *hash);
+void append_data(t_data **head, t_input_type input_type, char *input, char *filename);
+void free_data_list(t_data *head);
 
 #endif

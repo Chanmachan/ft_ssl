@@ -2,7 +2,7 @@
 #include <unistd.h>
 #include <string.h>
 
-bool parse_options(int ac, char **av, t_options *opts) {
+int parse_options(int ac, char **av, t_options *opts) {
   for (int i = 2; i < ac; i++) {
     if (av[i][0] == '-'){
       if (strlen(av[i]) == 2) {
@@ -21,15 +21,15 @@ bool parse_options(int ac, char **av, t_options *opts) {
 	  break;
 	default:
 	  print_err(ERR_INVALID_OPTION, av[i]);
-	  return 1;
+	  return -1;
 	}
       } else {
 	print_err(ERR_INVALID_OPTION, av[i]);
-	return 1;
+	return -1;
       }
     } else {
-      break;
+      return i;
     }
   }
-  return 0;
+  return ac;
 }

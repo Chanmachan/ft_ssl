@@ -11,6 +11,7 @@ typedef struct s_options {
   bool s;
 } t_options;
 
-bool parse_options(int ac, char **av, t_options *opts);
+// returns the index of the array after the option
+int parse_options(int ac, char **av, t_options *opts);
 
 #endif
