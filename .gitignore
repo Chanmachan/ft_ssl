@@ -1,0 +1,5 @@
+build
+cmake-build-debug
+libft/objs
+ft_ssl
+.idea
